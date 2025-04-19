@@ -13,8 +13,21 @@
 <body>
 
 <main layout:fragment="main-content">
-    <!--  individual web page content  -->
-    <h1> From Sub layout </h1>
+    <!--    welcome ~ start here-->
+    <div th:replace="~{fragments/welcome}">
+
+    </div>
+    <!--    welcome ~ end here-->
+    <!--        card start here-->
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col" th:each="article : ${articles}" th:object="${article}">
+                <div th:replace="~{/fragments/card :: card-readonly(*{uuid}, *{title}, *{thumbnail}, *{author})}"></div>
+            </div>
+
+        </div>
+    </div>
+    <!--        card end here-->
 </main>
 
 </body>

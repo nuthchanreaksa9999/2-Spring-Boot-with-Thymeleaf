@@ -1,0 +1,36 @@
+<section>
+  <!--card read only start here-->
+  <a th:fragment="card-readonly(uuid, title, thumbnail, author)"
+     th:href="@{/article/{uuid}(uuid=${uuid})}"
+    class="text-decoration-none">
+    <div class="card shadow-sm">
+      <img th:src="@{/resources/img/default/{thumbnail}(thumbnail=${thumbnail})}" alt="spring boot image" class="bd-placeholder-img card-img-top">
+      <div class="card-body">
+        <p th:text="${title}" class="card-text"></p>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group">
+          </div>
+          <small th:text="${author}" class="text-body-secondary"></small>
+        </div>
+      </div>
+    </div>
+  </a>
+  <!--card read only end here-->
+
+  <!--card action-->
+  <div th:fragment="card-action" class="card shadow-sm">
+    <img th:src="@{/resources/img/default/thumbnail.png}" alt="spring boot image" class="bd-placeholder-img card-img-top">
+    <div class="card-body">
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-outline-success">View</button>
+          <button type="button" class="btn btn-sm btn-outline-primary">Edit</button>
+          <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+
+        </div>
+        <small class="text-body-secondary">9 mins</small>
+      </div>
+    </div>
+  </div>
+</section>

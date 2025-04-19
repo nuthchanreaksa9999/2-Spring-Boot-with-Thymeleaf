@@ -21,9 +21,15 @@ configurations {
 
 repositories {
     mavenCentral()
+    maven { url 'https://jitpack.io' } // just in case you're pulling other GitHub libs
 }
 
 dependencies {
+// https://mvnrepository.com/artifact/com.github.javafaker/javafaker
+    implementation('com.github.javafaker:javafaker:1.0.1') {
+        exclude group: 'org.yaml', module: 'snakeyaml'
+    }
+    implementation 'org.yaml:snakeyaml:2.2' // or 2.3 (non-android version)
     // https://mvnrepository.com/artifact/nz.net.ultraq.thymeleaf/thymeleaf-layout-dialect
     implementation("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.4.0")
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
