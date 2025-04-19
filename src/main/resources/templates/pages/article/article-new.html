@@ -16,24 +16,25 @@
     <!--  individual web page content  -->
     <div class="container mt-3">
         <h1>Create new article</h1>
-        <form>
+        <form th:action="@{/article/new}" method="post" th:object="${article}" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="title">
-<!--                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+                        <input th:field="*{title}" type="text" class="form-control" id="title">
+                        <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="form-text text-danger"></div>
                     </div>
                     <div class="mb-3">
                         <label for="author" class="form-label">Author</label>
-                        <input type="text" class="form-control" id="author">
+                        <input th:field="*{author}" type="text" class="form-control" id="author">
+                        <div th:if="${#fields.hasErrors('author')}" th:errors="*{author}" class="form-text text-danger"></div>
                     </div>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </div>
                 <div class="col-6">
                         <div class="mb-3">
                             <label for="thumbnailFile" class="form-label">Thumbnail</label>
-                            <input class="form-control" type="file" id="thumbnailFile">
+                            <input class="form-control" type="file" id="thumbnailFile" name="thumbnailFile">
                 <!--preview image before upload javascript-->
                             <img class="w-50  mt-2" id="placeholder" th:src="@{/resources/img/default/placeholder.png}" alt="your image" />
                          </div>
@@ -52,8 +53,10 @@
     </script>
     <script>
         $(function(){
-            const thumbnailFile = $('#thumbnailFile')
-            const placeholder = $('#placeholder')
+            // const thumbnailFile = $('#thumbnailFile')
+            // const placeholder = $('#placeholder')
+            const thumbnailFile = document.getElementById('thumbnailFile')
+            const placeholder = document.getElementById('placeholder')
             thumbnailFile.onchange =evt => {
                 const  [file] = thumbnailFile.files
                 if(file) {

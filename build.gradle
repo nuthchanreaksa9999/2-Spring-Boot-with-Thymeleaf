@@ -25,6 +25,8 @@ repositories {
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
+    implementation("org.springframework.boot:spring-boot-starter-validation")
 // https://mvnrepository.com/artifact/com.github.javafaker/javafaker
     implementation('com.github.javafaker:javafaker:1.0.1') {
         exclude group: 'org.yaml', module: 'snakeyaml'
