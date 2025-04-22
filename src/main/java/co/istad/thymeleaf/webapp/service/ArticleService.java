@@ -12,4 +12,7 @@ public interface ArticleService {
 
     boolean save(Article article, MultipartFile file);
 
+    Article findByUuid(String uuid);
+
+
 }
